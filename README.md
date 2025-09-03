@@ -6,4 +6,4 @@
 ## Контакты
 *   Email: user@email.com
 *   Телефон: +7 (123) 456-78-90
-*   Telegram: @username
+*   Telegram: @username2
