@@ -15,4 +15,5 @@ test ('unsuccessful authorization on Sauce Demo', async({page}) => {
     await page.getByPlaceholder('Password').fill('secret_sauce');
     await page.locator('.submit-button.btn_action').click();
     await expect (page.locator('[data-test = "error"]')).toHaveText('Epic sadface: Sorry, this user has been locked out.');
-})
+});
+
