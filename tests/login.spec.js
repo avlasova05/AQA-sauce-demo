@@ -8,6 +8,8 @@ test ('check the authorization on Sauce Demo', async ({page}) =>{
     await page.getByPlaceholder('Password').fill('secret_sauce');
     await page.locator('.submit-button.btn_action').click();
     await expect (page).toHaveURL('https://www.saucedemo.com/inventory.html');
+
+
 });
 test ('unsuccessful authorization on Sauce Demo', async({page}) => {
     await page.goto('https://www.saucedemo.com/');
