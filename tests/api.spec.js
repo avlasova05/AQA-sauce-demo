@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import {test, expect} from '@playwright/test'; // Добать пустую строку после этой. Соблюдать правила форматирования
 test.describe.serial('API-tests for Restful-booker', () => {
     let bookingid;
     let authToken;
@@ -23,7 +23,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(`Status-code: ${response.status()}`);
+        console.log(`Status-code: ${response.status()}`); // console.log в тестах быть не должно
         expect (response.status()).toBe(200);
         const responseBody = await response.json();
         console.log('Response body:', responseBody);
@@ -31,9 +31,9 @@ test.describe.serial('API-tests for Restful-booker', () => {
         bookingid = responseBody.bookingid;
         console.log(`Saved booking ID: ${bookingid}`);
     
-        expect(responseBody).toHaveProperty('bookingid');
+        expect(responseBody).toHaveProperty('bookingid'); 
         expect(responseBody.bookingid).toBeGreaterThan(0);
-        expect(responseBody.booking.firstname).toBe (bookingData.firstname);
+        expect(responseBody.booking.firstname).toBe (bookingData.firstname); // Строки с 36 по 42 можно поменять на expect(responseBody.booking).toMatchObject(newBooking);
         expect (responseBody.booking.lastname).toBe(bookingData.lastname);
         expect (responseBody.booking.totalprice).toBe(bookingData.totalprice);
         expect (responseBody.booking.depositpaid).toBe(bookingData.depositpaid);
@@ -41,7 +41,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         expect (responseBody.booking.bookingdates.checkout).toBe(bookingData.bookingdates.checkout);
         expect (responseBody.booking.additionalneeds).toBe(bookingData.additionalneeds);
         
-    });
+    }); // Форматирование
     test ('Getting info about booking (Get)', async ({request}) => {
        
         expect(bookingid).toBeDefined();
@@ -50,7 +50,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         expect(response.status()).toBe(200);
         const responseBody = await response.json();
         console.log('Responce body:', responseBody);
-        expect(responseBody.firstname).toBe(bookingData.firstname);
+        expect(responseBody.firstname).toBe(bookingData.firstname); // Аналогично 36 строке
         expect(responseBody.lastname).toBe(bookingData.lastname);
         expect(responseBody.totalprice).toBe(bookingData.totalprice);
         expect(responseBody.depositpaid).toBe(bookingData.depositpaid);
