@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 import { defineConfig, devices } from '@playwright/test';
-test ('check the authorization on Sauce Demo', async ({page}) =>{
+test ('@ui check the authorization on Sauce Demo', async ({page}) =>{
     await page.goto('https://www.saucedemo.com/');
     await expect(page.getByPlaceholder('Username')).toBeVisible();
     await page.getByPlaceholder('Username').fill('standard_user');
@@ -11,7 +11,7 @@ test ('check the authorization on Sauce Demo', async ({page}) =>{
 
 
 });
-test ('unsuccessful authorization on Sauce Demo', async({page}) => {
+test ('@ui unsuccessful authorization on Sauce Demo', async({page}) => {
     await page.goto('https://www.saucedemo.com/');
     await page.getByPlaceholder('Username').fill('locked_out_user');
     await page.getByPlaceholder('Password').fill('secret_sauce');

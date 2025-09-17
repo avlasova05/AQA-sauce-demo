@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-test.describe.serial('API-tests for Restful-booker', () => {
+test.describe.serial('@api API-tests for Restful-booker', () => {
     let bookingid;
     let authToken;
     const baseURL = 'https://restful-booker.herokuapp.com';
@@ -14,7 +14,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         },
         additionalneeds: 'Breakfast'
     };
-    test('Creating booking POST-request ', async ({ request }) => {
+    test('@api Creating booking POST-request ', async ({ request }) => {
         
         
         const response = await request.post(`${baseURL}/booking`, {
@@ -42,7 +42,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         expect (responseBody.booking.additionalneeds).toBe(bookingData.additionalneeds);
         
     });
-    test ('Getting info about booking (Get)', async ({request}) => {
+    test ('@api Getting info about booking (Get)', async ({request}) => {
        
         expect(bookingid).toBeDefined();
         const response = await request.get(`${baseURL}/booking/${bookingid}`);
@@ -58,7 +58,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         expect(responseBody.bookingdates.checkout).toBe(bookingData.bookingdates.checkout);
         expect(responseBody.additionalneeds).toBe(bookingData.additionalneeds);
     });
-    test('Updating the booking', async ({request}) => {
+    test('@api Updating the booking', async ({request}) => {
         expect(bookingid).toBeDefined();
         const authResponse = await request.post (`${baseURL}/auth`, {
             data:{
@@ -105,7 +105,7 @@ test.describe.serial('API-tests for Restful-booker', () => {
         expect(responseBody.bookingdates.checkout).toBe('2025-01-09'); 
         expect(responseBody.additionalneeds).toBe('Lunch'); 
     });
-    test ('Deleting the booking', async ({request}) => {
+    test ('@api Deleting the booking', async ({request}) => {
         expect(bookingid).toBeDefined();
         expect(authToken).toBeDefined();
         const response = await request.delete(`${baseURL}/booking/${bookingid}`, {
